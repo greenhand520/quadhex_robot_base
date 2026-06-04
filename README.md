@@ -4,11 +4,9 @@
 
 ### 电源架构
 
-![电源架构](./docs/images/power_architecture.png)
-
-> 交互版本请访问 → [Power Architecture (HTML)](/docs/diagrams/power_architecture.html)
-
-### 固件功能
+<iframe src="./docs/power_architecture.html"
+        style="aspect-ratio:1340/805;border:none;display:block;max-height:820px;">
+</iframe>
 
 ## 硬件与结构
 

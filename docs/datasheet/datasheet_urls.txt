@@ -1,0 +1,9 @@
+MPU6500: https://invensense.tdk.com/products/motion-tracking/6-axis/mpu-6500/#documentation
+
+RT9013: https://www.richtek.com/Products/Linear%20Regulator/Single%20Output%20Linear%20Regulator/RT9013
+
+Texas Instruments IC: BQ40Z50, BQ24725, TPS54821, TPS40305, SN74LVC2G241, easy to get datasheet
+
+STM32F405RGT5: https://www.st.com/en/microcontrollers-microprocessors/stm32f405rg.html
+
+

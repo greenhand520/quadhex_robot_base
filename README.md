@@ -4,8 +4,9 @@
 
 ### 电源架构
 
-<a href="https://greenhand520.github.io/quadhex_robot_base/docs/power_architecture.html">
-</a>
+![电源架构](./docs/images/power_architecture.png)
+
+> 网页版本请访问 → [Power Architecture (HTML)](https://greenhand520.github.io/quadhex_robot_base/docs/power_architecture.html)
 
 ## 硬件与结构
 

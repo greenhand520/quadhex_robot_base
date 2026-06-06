@@ -8,13 +8,7 @@
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-html,body{
-  width:100%;
-  background:#080c14;
-  overflow-x:hidden;
-  color:#e2e8f0;
-  font-family:'Noto Sans SC',sans-serif;
-}
+html,body{width:100%;background:#080c14;overflow-x:hidden;color:#e2e8f0;font-family:'Noto Sans SC',sans-serif}
 :root{
   --bg:#080c14;--surface:#0e1422;--border:rgba(255,255,255,0.08);
   --orange:#ff8c42;--purple:#a78bfa;--red:#f87171;--gold:#fbbf24;
@@ -24,17 +18,11 @@ html,body{
 .scale-wrapper{
   width:100%;
   height:min(805px,calc(100vw * 805 / 1550));
-  overflow:hidden;
-  display:flex;
-  justify-content:center;
+  overflow:hidden;display:flex;justify-content:center;
 }
 .canvas{
-  position:relative;
-  width:1550px;
-  height:805px;
-  flex-shrink:0;
-  transform-origin:top center;
-  transform:scale(min(calc(100vw / 1550px),1));
+  position:relative;width:1550px;height:805px;flex-shrink:0;
+  transform-origin:top center;transform:scale(min(calc(100vw / 1550px),1));
 }
 .canvas::before{
   content:'';position:absolute;inset:0;
@@ -114,32 +102,32 @@ html,body{
       <marker id="lr" viewBox="0 0 10 10" refX="1" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M10,0 L0,5 L10,10 L7,5Z" fill="#f87171"/></marker>
     </defs>
 
-    <!-- PD → HUSB  gap=90px -->
+    <!-- PD → HUSB -->
     <g class="ag" style="animation-delay:.25s">
       <line x1="170" y1="118" x2="260" y2="118" stroke="#ff8c42" stroke-width="2.5" marker-end="url(#ro)"/>
       <text x="215" y="108" text-anchor="middle" fill="#ff8c42" font-family="JetBrains Mono,monospace" font-size="10" opacity=".85">USB-PD</text>
     </g>
-    <!-- HUSB → BQ24  gap=110px -->
+    <!-- HUSB → BQ24 -->
     <g class="ag" style="animation-delay:.35s">
       <line x1="410" y1="118" x2="520" y2="118" stroke="#a78bfa" stroke-width="2.5" marker-end="url(#rp)"/>
       <text x="465" y="108" text-anchor="middle" fill="#a78bfa" font-family="JetBrains Mono,monospace" font-size="10" opacity=".85">PD 诱骗</text>
     </g>
-    <!-- BQ24 → BQ40  gap=125px -->
+    <!-- BQ24 → BQ40 -->
     <g class="ag" style="animation-delay:.45s">
       <line x1="705" y1="118" x2="830" y2="118" stroke="#a78bfa" stroke-width="2.5" marker-end="url(#rp)"/>
       <text x="767" y="108" text-anchor="middle" fill="#a78bfa" font-family="JetBrains Mono,monospace" font-size="10" opacity=".8">充电</text>
     </g>
-    <!-- BQ40 ↔ BAT  gap=135px -->
+    <!-- BQ40 ↔ BAT -->
     <g class="ag" style="animation-delay:.55s">
       <line x1="1025" y1="118" x2="1160" y2="118" stroke="#f87171" stroke-width="2.5" marker-start="url(#lr)" marker-end="url(#rr)"/>
       <text x="1092" y="108" text-anchor="middle" fill="#f87171" font-family="JetBrains Mono,monospace" font-size="10" opacity=".8">充 / 放电</text>
     </g>
 
-    <!-- Battery → Bus vertical  x=1258 -->
+    <!-- ★ BQ40Z50 底部 → Bus vertical  x=928 ★ -->
     <g class="ag" style="animation-delay:.65s">
-      <line x1="1258" y1="165" x2="1258" y2="340" stroke="#fbbf24" stroke-width="8" opacity=".06"/>
-      <line x1="1258" y1="165" x2="1258" y2="340" stroke="#fbbf24" stroke-width="2"/>
-      <text x="1278" y="260" fill="#fbbf24" font-family="JetBrains Mono,monospace" font-size="10" opacity=".6">电池电压</text>
+      <line x1="928" y1="165" x2="928" y2="340" stroke="#fbbf24" stroke-width="8" opacity=".06"/>
+      <line x1="928" y1="165" x2="928" y2="340" stroke="#fbbf24" stroke-width="2"/>
+      <text x="948" y="258" fill="#fbbf24" font-family="JetBrains Mono,monospace" font-size="10" opacity=".65">电池电压(经保护)</text>
     </g>
 
     <!-- Horizontal Power Bus  290→1400 -->
@@ -147,11 +135,11 @@ html,body{
       <line x1="290" y1="340" x2="1400" y2="340" stroke="#fbbf24" stroke-width="6" opacity=".06"/>
       <line x1="290" y1="340" x2="1400" y2="340" stroke="#fbbf24" stroke-width="2" opacity=".65"/>
       <text x="845" y="333" text-anchor="middle" fill="#fbbf24" font-family="JetBrains Mono,monospace" font-size="10" font-weight="500" opacity=".7">电源总线 Power Bus</text>
-      <circle cx="290" cy="340" r="3" fill="#fb923c" opacity=".55"/>
-      <circle cx="690" cy="340" r="3" fill="#fbbf24" opacity=".45"/>
-      <circle cx="1025" cy="340" r="3" fill="#fbbf24" opacity=".45"/>
-      <circle cx="1258" cy="340" r="3.5" fill="#fbbf24" opacity=".5"/>
-      <circle cx="1400" cy="340" r="3" fill="#22d3ee" opacity=".45"/>
+      <circle cx="290"  cy="340" r="3"   fill="#fb923c" opacity=".55"/>
+      <circle cx="690"  cy="340" r="3"   fill="#fbbf24" opacity=".45"/>
+      <circle cx="928"  cy="340" r="3.5" fill="#fbbf24" opacity=".5"/>
+      <circle cx="1080" cy="340" r="3"   fill="#fbbf24" opacity=".45"/>
+      <circle cx="1400" cy="340" r="3"   fill="#22d3ee" opacity=".45"/>
     </g>
 
     <!-- Bus → TPS40305 -->
@@ -166,8 +154,8 @@ html,body{
     </g>
     <!-- Bus → 电池直出 -->
     <g class="ag" style="animation-delay:.88s">
-      <line x1="1025" y1="343" x2="1025" y2="428" stroke="#fbbf24" stroke-width="2" marker-end="url(#rg)"/>
-      <text x="1045" y="388" fill="#38bdf8" font-family="JetBrains Mono,monospace" font-size="9" font-weight="500" opacity=".7">BAT+</text>
+      <line x1="1080" y1="343" x2="1080" y2="428" stroke="#fbbf24" stroke-width="2" marker-end="url(#rg)"/>
+      <text x="1100" y="388" fill="#38bdf8" font-family="JetBrains Mono,monospace" font-size="9" font-weight="500" opacity=".7">BAT+</text>
     </g>
     <!-- Bus → STM32 -->
     <g class="ag" style="animation-delay:.93s">
@@ -207,7 +195,7 @@ html,body{
     <div class="nm">TPS54821 · 5V@6A</div>
     <div class="inf">DC-DC Buck 输出 5V<br>→ Linux 上位机 / YDLIDAR X2</div>
   </div>
-  <div class="block b-b" style="left:900px;top:430px;width:250px;height:85px;animation-delay:.9s">
+  <div class="block b-b" style="left:955px;top:430px;width:250px;height:85px;animation-delay:.9s">
     <div class="nm">电池直接输出</div>
     <div class="inf">DC2.1 / XT30 / PH2.0<br>电池电压直供外部设备</div>
   </div>
@@ -216,10 +204,9 @@ html,body{
     <div class="inf">RY8310 → 5V @ 1.2A<br>ME6217 → 3.3V @ 800mA<br>RT9013 → 3.3V @ 500mA</div>
   </div>
 
-  <!-- Separator -->
   <div class="sep" style="top:565px;animation-delay:1.2s"></div>
 
-  <!-- Summary: Power Path -->
+  <!-- Summary -->
   <div class="summary" style="left:20px;top:580px;width:640px;height:185px;animation-delay:1.3s">
     <h3>电源路径 Power Path</h3>
     <hr>
@@ -231,8 +218,6 @@ html,body{
       <li>4S 电池 → BQ40Z50 → RY8310 (5V@1.2A) → STM32 → 3.3V LDO</li>
     </ul>
   </div>
-
-  <!-- Summary: Specs -->
   <div class="summary" style="left:700px;top:580px;width:810px;height:185px;animation-delay:1.4s">
     <h3>电气规格 Specifications</h3>
     <hr>

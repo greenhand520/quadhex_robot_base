@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Power Architecture v3</title>
+<title>Power Architecture</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
@@ -15,47 +15,36 @@ html,body{
   color:#e2e8f0;
   font-family:'Noto Sans SC',sans-serif;
 }
-
 :root{
   --bg:#080c14;--surface:#0e1422;--border:rgba(255,255,255,0.08);
   --orange:#ff8c42;--purple:#a78bfa;--red:#f87171;--gold:#fbbf24;
   --servo:#fb923c;--green:#34d399;--blue:#38bdf8;--cyan:#22d3ee;--dim:#475569;
   --text:#e2e8f0;--text-dim:#64748b;
 }
-
 .scale-wrapper{
   width:100%;
-  height:min(805px, calc(100vw * 805 / 1340));
+  height:min(805px,calc(100vw * 805 / 1550));
   overflow:hidden;
   display:flex;
   justify-content:center;
 }
-
 .canvas{
   position:relative;
-  width:1340px;
+  width:1550px;
   height:805px;
   flex-shrink:0;
   transform-origin:top center;
-  transform:scale(min(calc(100vw / 1340px), 1));
+  transform:scale(min(calc(100vw / 1550px),1));
 }
 .canvas::before{
   content:'';position:absolute;inset:0;
   background-image:radial-gradient(rgba(255,255,255,0.025) 1px,transparent 1px);
   background-size:20px 20px;pointer-events:none;
 }
-
-/* ====== 标题修复：left:0 + right:0 + text-align:center ====== */
 .title{
-  position:absolute;
-  top:6px;
-  left:0;
-  right:0;
-  text-align:center;
-  z-index:5;
-  white-space:nowrap;
-  opacity:0;
-  animation:fadeUp .6s ease .05s forwards;
+  position:absolute;top:6px;left:0;right:0;
+  text-align:center;z-index:5;white-space:nowrap;
+  opacity:0;animation:fadeUp .6s ease .05s forwards;
 }
 .title h1{
   font-size:21px;font-weight:700;letter-spacing:2px;
@@ -66,8 +55,6 @@ html,body{
   font-family:'JetBrains Mono',monospace;font-size:11px;
   color:var(--dim);letter-spacing:3px;text-transform:uppercase;margin-top:3px;
 }
-
-/* ====== 功能块 ====== */
 .block{
   position:absolute;border-radius:10px;padding:12px 15px;
   background:var(--surface);border:1.5px solid var(--border);z-index:3;
@@ -85,16 +72,13 @@ html,body{
 .b-g{border-color:var(--green)}.b-g .nm{color:var(--green)}.b-g:hover{box-shadow:0 4px 30px rgba(52,211,153,.15)}
 .b-b{border-color:var(--blue)}.b-b .nm{color:var(--blue)}.b-b:hover{box-shadow:0 4px 30px rgba(56,189,248,.15)}
 .b-c{border-color:var(--cyan)}.b-c .nm{color:var(--cyan)}.b-c:hover{box-shadow:0 4px 30px rgba(34,211,238,.15)}
-
 .svg-layer{position:absolute;top:0;left:0;width:100%;height:100%;z-index:2;pointer-events:none;overflow:visible}
 .ag{opacity:0;animation:fadeUp .4s ease forwards}
-
 .sep{
-  position:absolute;left:20px;top:592px;width:1300px;height:1px;
+  position:absolute;left:20px;width:1510px;height:1px;
   background:linear-gradient(90deg,transparent,rgba(255,255,255,.06),transparent);
   z-index:2;opacity:0;animation:fadeUp .4s ease 1.2s forwards;
 }
-
 .summary{
   position:absolute;border-radius:10px;padding:16px 20px;
   background:var(--surface);border:1px solid var(--border);z-index:3;
@@ -110,14 +94,12 @@ html,body{
 </style>
 </head>
 <body>
-
 <div class="scale-wrapper">
 <div class="canvas" id="canvas">
 
-  <!-- ★ 标题：left:0 + right:0 + text-align:center，不再用 transform 居中 -->
   <div class="title">
     <h1>电源架构</h1>
-    <div class="sub">Power Architecture · SC8815 + BQ40Z50 + HUSB238A</div>
+    <div class="sub">Power Architecture · BQ24725 + TPS40305 + HUSB238A</div>
   </div>
 
   <svg class="svg-layer" xmlns="http://www.w3.org/2000/svg">
@@ -125,125 +107,141 @@ html,body{
       <marker id="ro" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0,0 L10,5 L0,10 L3,5Z" fill="#ff8c42"/></marker>
       <marker id="rp" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0,0 L10,5 L0,10 L3,5Z" fill="#a78bfa"/></marker>
       <marker id="rr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0,0 L10,5 L0,10 L3,5Z" fill="#f87171"/></marker>
-      <marker id="rs" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0,0 L10,5 L0,10 L3,5Z" fill="#fb923c"/></marker>
       <marker id="rg" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0,0 L10,5 L0,10 L3,5Z" fill="#fbbf24"/></marker>
+      <marker id="rs" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0,0 L10,5 L0,10 L3,5Z" fill="#fb923c"/></marker>
       <marker id="rc" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M0,0 L10,5 L0,10 L3,5Z" fill="#22d3ee"/></marker>
       <marker id="lp" viewBox="0 0 10 10" refX="1" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M10,0 L0,5 L10,10 L7,5Z" fill="#a78bfa"/></marker>
       <marker id="lr" viewBox="0 0 10 10" refX="1" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path d="M10,0 L0,5 L10,10 L7,5Z" fill="#f87171"/></marker>
     </defs>
 
-    <g class="ag" style="animation-delay:.3s">
-      <line x1="175" y1="118" x2="232" y2="118" stroke="#ff8c42" stroke-width="2.5" marker-end="url(#ro)"/>
-      <text x="203" y="108" text-anchor="middle" fill="#ff8c42" font-family="JetBrains Mono,monospace" font-size="9.5" opacity=".8">USB-PD</text>
+    <!-- PD → HUSB  gap=90px -->
+    <g class="ag" style="animation-delay:.25s">
+      <line x1="170" y1="118" x2="260" y2="118" stroke="#ff8c42" stroke-width="2.5" marker-end="url(#ro)"/>
+      <text x="215" y="108" text-anchor="middle" fill="#ff8c42" font-family="JetBrains Mono,monospace" font-size="10" opacity=".85">USB-PD</text>
     </g>
-    <g class="ag" style="animation-delay:.4s">
-      <line x1="405" y1="118" x2="462" y2="118" stroke="#a78bfa" stroke-width="2.5" marker-end="url(#rp)"/>
-      <text x="433" y="108" text-anchor="middle" fill="#a78bfa" font-family="JetBrains Mono,monospace" font-size="9.5" opacity=".8">PD 诱骗</text>
+    <!-- HUSB → BQ24  gap=110px -->
+    <g class="ag" style="animation-delay:.35s">
+      <line x1="410" y1="118" x2="520" y2="118" stroke="#a78bfa" stroke-width="2.5" marker-end="url(#rp)"/>
+      <text x="465" y="108" text-anchor="middle" fill="#a78bfa" font-family="JetBrains Mono,monospace" font-size="10" opacity=".85">PD 诱骗</text>
     </g>
-    <g class="ag" style="animation-delay:.5s">
-      <line x1="680" y1="118" x2="737" y2="118" stroke="#a78bfa" stroke-width="2.5" marker-start="url(#lp)" marker-end="url(#rp)"/>
-      <text x="708" y="108" text-anchor="middle" fill="#a78bfa" font-family="JetBrains Mono,monospace" font-size="9.5" opacity=".75">充 / 放电</text>
+    <!-- BQ24 → BQ40  gap=125px -->
+    <g class="ag" style="animation-delay:.45s">
+      <line x1="705" y1="118" x2="830" y2="118" stroke="#a78bfa" stroke-width="2.5" marker-end="url(#rp)"/>
+      <text x="767" y="108" text-anchor="middle" fill="#a78bfa" font-family="JetBrains Mono,monospace" font-size="10" opacity=".8">充电</text>
     </g>
-    <g class="ag" style="animation-delay:.6s">
-      <line x1="955" y1="118" x2="1012" y2="118" stroke="#f87171" stroke-width="2.5" marker-start="url(#lr)" marker-end="url(#rr)"/>
-      <text x="983" y="108" text-anchor="middle" fill="#f87171" font-family="JetBrains Mono,monospace" font-size="9.5" opacity=".75">充 / 放电</text>
+    <!-- BQ40 ↔ BAT  gap=135px -->
+    <g class="ag" style="animation-delay:.55s">
+      <line x1="1025" y1="118" x2="1160" y2="118" stroke="#f87171" stroke-width="2.5" marker-start="url(#lr)" marker-end="url(#rr)"/>
+      <text x="1092" y="108" text-anchor="middle" fill="#f87171" font-family="JetBrains Mono,monospace" font-size="10" opacity=".8">充 / 放电</text>
     </g>
-    <g class="ag" style="animation-delay:.7s">
-      <path d="M572,165 C572,210 570,245 570,277" stroke="#fb923c" stroke-width="2.5" fill="none" marker-end="url(#rs)"/>
-      <text x="596" y="225" fill="#fb923c" font-family="JetBrains Mono,monospace" font-size="10" font-weight="600" opacity=".85">Buck ≈8.4V</text>
+
+    <!-- Battery → Bus vertical  x=1258 -->
+    <g class="ag" style="animation-delay:.65s">
+      <line x1="1258" y1="165" x2="1258" y2="340" stroke="#fbbf24" stroke-width="8" opacity=".06"/>
+      <line x1="1258" y1="165" x2="1258" y2="340" stroke="#fbbf24" stroke-width="2"/>
+      <text x="1278" y="260" fill="#fbbf24" font-family="JetBrains Mono,monospace" font-size="10" opacity=".6">电池电压</text>
     </g>
-    <g class="ag" style="animation-delay:.75s">
-      <line x1="1128" y1="165" x2="1128" y2="385" stroke="#fbbf24" stroke-width="8" opacity=".06"/>
-      <line x1="1128" y1="165" x2="1128" y2="385" stroke="#fbbf24" stroke-width="2"/>
-      <circle cx="1128" cy="385" r="3.5" fill="#fbbf24" opacity=".5"/>
-      <text x="1146" y="282" fill="#fbbf24" font-family="JetBrains Mono,monospace" font-size="9.5" opacity=".65">电池电压</text>
+
+    <!-- Horizontal Power Bus  290→1400 -->
+    <g class="ag" style="animation-delay:.72s">
+      <line x1="290" y1="340" x2="1400" y2="340" stroke="#fbbf24" stroke-width="6" opacity=".06"/>
+      <line x1="290" y1="340" x2="1400" y2="340" stroke="#fbbf24" stroke-width="2" opacity=".65"/>
+      <text x="845" y="333" text-anchor="middle" fill="#fbbf24" font-family="JetBrains Mono,monospace" font-size="10" font-weight="500" opacity=".7">电源总线 Power Bus</text>
+      <circle cx="290" cy="340" r="3" fill="#fb923c" opacity=".55"/>
+      <circle cx="690" cy="340" r="3" fill="#fbbf24" opacity=".45"/>
+      <circle cx="1025" cy="340" r="3" fill="#fbbf24" opacity=".45"/>
+      <circle cx="1258" cy="340" r="3.5" fill="#fbbf24" opacity=".5"/>
+      <circle cx="1400" cy="340" r="3" fill="#22d3ee" opacity=".45"/>
     </g>
-    <g class="ag" style="animation-delay:.8s">
-      <line x1="470" y1="385" x2="1160" y2="385" stroke="#fbbf24" stroke-width="6" opacity=".06"/>
-      <line x1="470" y1="385" x2="1160" y2="385" stroke="#fbbf24" stroke-width="2" opacity=".65"/>
-      <text x="815" y="378" text-anchor="middle" fill="#fbbf24" font-family="JetBrains Mono,monospace" font-size="10" font-weight="500" opacity=".7">电源总线 Power Bus</text>
-      <circle cx="510" cy="385" r="3" fill="#fbbf24" opacity=".45"/>
-      <circle cx="830" cy="385" r="3" fill="#fbbf24" opacity=".45"/>
-      <circle cx="1140" cy="385" r="3" fill="#22d3ee" opacity=".45"/>
+
+    <!-- Bus → TPS40305 -->
+    <g class="ag" style="animation-delay:.78s">
+      <line x1="290" y1="343" x2="290" y2="428" stroke="#fb923c" stroke-width="2.5" marker-end="url(#rs)"/>
+      <text x="310" y="388" fill="#fb923c" font-family="JetBrains Mono,monospace" font-size="10" font-weight="600" opacity=".85">Buck ≈8.4V</text>
     </g>
-    <g class="ag" style="animation-delay:.85s">
-      <line x1="510" y1="388" x2="510" y2="452" stroke="#fbbf24" stroke-width="2" marker-end="url(#rg)"/>
-      <text x="527" y="423" fill="#34d399" font-family="JetBrains Mono,monospace" font-size="9" font-weight="500" opacity=".7">5V@6A</text>
+    <!-- Bus → TPS54821 -->
+    <g class="ag" style="animation-delay:.83s">
+      <line x1="690" y1="343" x2="690" y2="428" stroke="#fbbf24" stroke-width="2" marker-end="url(#rg)"/>
+      <text x="710" y="388" fill="#34d399" font-family="JetBrains Mono,monospace" font-size="9" font-weight="500" opacity=".7">5V@6A</text>
     </g>
-    <g class="ag" style="animation-delay:.9s">
-      <line x1="830" y1="388" x2="830" y2="452" stroke="#fbbf24" stroke-width="2" marker-end="url(#rg)"/>
-      <text x="847" y="423" fill="#38bdf8" font-family="JetBrains Mono,monospace" font-size="9" font-weight="500" opacity=".7">BAT+</text>
+    <!-- Bus → 电池直出 -->
+    <g class="ag" style="animation-delay:.88s">
+      <line x1="1025" y1="343" x2="1025" y2="428" stroke="#fbbf24" stroke-width="2" marker-end="url(#rg)"/>
+      <text x="1045" y="388" fill="#38bdf8" font-family="JetBrains Mono,monospace" font-size="9" font-weight="500" opacity=".7">BAT+</text>
     </g>
-    <g class="ag" style="animation-delay:.95s">
-      <line x1="1140" y1="388" x2="1140" y2="447" stroke="#22d3ee" stroke-width="2" marker-end="url(#rc)"/>
-      <text x="1157" y="420" fill="#22d3ee" font-family="JetBrains Mono,monospace" font-size="9" font-weight="500" opacity=".7">→ RY8310</text>
-    </g>
-    <g class="ag" style="animation-delay:1s">
-      <path d="M848,165 Q1100,290 1140,385" stroke="#475569" stroke-width="1" stroke-dasharray="5 4" fill="none" opacity=".35"/>
-      <text x="1050" y="270" fill="#475569" font-family="JetBrains Mono,monospace" font-size="9" opacity=".45">SMBus</text>
+    <!-- Bus → STM32 -->
+    <g class="ag" style="animation-delay:.93s">
+      <line x1="1400" y1="343" x2="1400" y2="428" stroke="#22d3ee" stroke-width="2" marker-end="url(#rc)"/>
+      <text x="1417" y="388" fill="#22d3ee" font-family="JetBrains Mono,monospace" font-size="9" font-weight="500" opacity=".7">→ RY8310</text>
     </g>
   </svg>
 
-  <div class="block b-o" style="left:20px;top:70px;width:155px;height:95px;animation-delay:.1s">
+  <!-- ===== Row 1 ===== -->
+  <div class="block b-o" style="left:40px;top:70px;width:130px;height:95px;animation-delay:.1s">
     <div class="nm">外部电源输入</div>
-    <div class="inf">PD 适配器<br>≤ 140W</div>
+    <div class="inf">PD 适配器<br>≤ 100W</div>
   </div>
-  <div class="block b-p" style="left:235px;top:70px;width:170px;height:95px;animation-delay:.18s">
+  <div class="block b-p" style="left:260px;top:70px;width:150px;height:95px;animation-delay:.15s">
     <div class="nm">HUSB238A</div>
-    <div class="inf">PD Sink 诱骗芯片<br>USB-PD 协议协商</div>
+    <div class="inf">PD Sink 诱骗<br>USB-PD 协议协商</div>
   </div>
-  <div class="block b-p" style="left:465px;top:70px;width:215px;height:95px;animation-delay:.26s">
-    <div class="nm">SC8815</div>
-    <div class="inf">双向 Buck-Boost DCDC<br>充电管理 + 舵机 Buck 输出</div>
+  <div class="block b-p" style="left:520px;top:70px;width:185px;height:95px;animation-delay:.22s">
+    <div class="nm">BQ24725</div>
+    <div class="inf">充电管理 IC<br>最大 100W 输入<br>I2C 可编程</div>
   </div>
-  <div class="block b-r" style="left:740px;top:70px;width:215px;height:95px;animation-delay:.34s">
+  <div class="block b-r" style="left:830px;top:70px;width:195px;height:95px;animation-delay:.3s">
     <div class="nm">BQ40Z50</div>
     <div class="inf">电池保护 + 电量计<br>过充 / 过放 / 过流 / 短路<br>SMBus 电量统计</div>
   </div>
-  <div class="block b-r" style="left:1015px;top:70px;width:225px;height:95px;animation-delay:.42s">
+  <div class="block b-r" style="left:1160px;top:70px;width:195px;height:95px;animation-delay:.38s">
     <div class="nm">4S 锂电池</div>
     <div class="inf">14.8V nom / 16.8V max<br>21700 电芯 · ~5000mAh</div>
   </div>
-  <div class="block b-s" style="left:430px;top:280px;width:280px;height:85px;animation-delay:.68s">
-    <div class="nm">18路舵机</div>
-    <div class="inf">SC8815 Buck 降压 ≈8.4V<br>峰值电流大</div>
+
+  <!-- ===== Row 2 ===== -->
+  <div class="block b-s" style="left:135px;top:430px;width:310px;height:90px;animation-delay:.8s">
+    <div class="nm">TPS40305 → 18路舵机</div>
+    <div class="inf">DC-DC Buck 降压至 ≈8.4V<br>峰值电流 20A MAX · 逐周期限流</div>
   </div>
-  <div class="block b-g" style="left:370px;top:455px;width:280px;height:85px;animation-delay:.88s">
+  <div class="block b-g" style="left:555px;top:430px;width:270px;height:85px;animation-delay:.85s">
     <div class="nm">TPS54821 · 5V@6A</div>
     <div class="inf">DC-DC Buck 输出 5V<br>→ Linux 上位机 / YDLIDAR X2</div>
   </div>
-  <div class="block b-b" style="left:690px;top:455px;width:280px;height:85px;animation-delay:.95s">
+  <div class="block b-b" style="left:900px;top:430px;width:250px;height:85px;animation-delay:.9s">
     <div class="nm">电池直接输出</div>
     <div class="inf">DC2.1 / XT30 / PH2.0<br>电池电压直供外部设备</div>
   </div>
-  <div class="block b-c" style="left:1000px;top:450px;width:280px;height:110px;animation-delay:1.02s">
+  <div class="block b-c" style="left:1280px;top:430px;width:240px;height:115px;animation-delay:.95s">
     <div class="nm">STM32 主控</div>
     <div class="inf">RY8310 → 5V @ 1.2A<br>ME6217 → 3.3V @ 800mA<br>RT9013 → 3.3V @ 500mA</div>
   </div>
 
-  <div class="sep"></div>
+  <!-- Separator -->
+  <div class="sep" style="top:565px;animation-delay:1.2s"></div>
 
-  <div class="summary" style="left:20px;top:600px;width:580px;height:185px;animation-delay:1.3s">
+  <!-- Summary: Power Path -->
+  <div class="summary" style="left:20px;top:580px;width:640px;height:185px;animation-delay:1.3s">
     <h3>电源路径 Power Path</h3>
     <hr>
     <ul class="path-list">
-      <li>PD 适配器 → HUSB238A (PD 诱骗) → SC8815 (充电) → BQ40Z50 → 4S 电池</li>
-      <li>4S 电池 → BQ40Z50 (保护) → SC8815 (Buck) → 18路舵机 ≈8.4V</li>
+      <li>PD 适配器 → HUSB238A (PD 诱骗) → BQ24725 (充电) → BQ40Z50 → 4S 电池</li>
+      <li>4S 电池 → BQ40Z50 (保护) → TPS40305 (Buck) → 18路舵机 ≈8.4V</li>
       <li>4S 电池 → BQ40Z50 (保护) → TPS54821 (Buck) → 5V@6A → Linux 上位机</li>
       <li>4S 电池 → BQ40Z50 (保护) → 直接输出 DC2.1 / XT30 / PH2.0</li>
       <li>4S 电池 → BQ40Z50 → RY8310 (5V@1.2A) → STM32 → 3.3V LDO</li>
     </ul>
   </div>
-  <div class="summary" style="left:640px;top:600px;width:640px;height:185px;animation-delay:1.4s">
+
+  <!-- Summary: Specs -->
+  <div class="summary" style="left:700px;top:580px;width:810px;height:185px;animation-delay:1.4s">
     <h3>电气规格 Specifications</h3>
     <hr>
     <div class="spec-grid">
       <span class="sp-l">电池</span><span class="sp-v">4S 21700 · 14.8V nom / 16.8V max · ~5000mAh</span>
-      <span class="sp-l">充电</span><span class="sp-v">HUSB238A PD 诱骗 + SC8815 双向 DCDC</span>
+      <span class="sp-l">充电</span><span class="sp-v">HUSB238A PD 诱骗 + BQ24725 充电管理 (最大 100W, I2C)</span>
       <span class="sp-l">保护</span><span class="sp-v">BQ40Z50 过充 / 过放 / 过流 / 短路 + 电量计 (SMBus)</span>
-      <span class="sp-l">舵机</span><span class="sp-v">SC8815 Buck ≈8.4V @ 20A MAX</span>
+      <span class="sp-l">舵机</span><span class="sp-v">TPS40305 DC-DC Buck ≈8.4V @ 20A MAX · 逐周期限流</span>
       <span class="sp-l">5V输出</span><span class="sp-v">TPS54821 5V @ 6A MAX → 上位机 / YDLIDAR</span>
-      <span class="sp-l">直出</span><span class="sp-v">DC2.1 / XT30 / PH2.0 (电池电压直供)</span>
       <span class="sp-l">STM32</span><span class="sp-v">RY8310 5V@1.2A │ ME6217 3.3V@800mA │ RT9013 3.3V@500mA</span>
     </div>
   </div>
@@ -253,16 +251,14 @@ html,body{
 
 <script>
 (function(){
-  var c = document.getElementById('canvas');
-  var p = c.parentElement;
+  var c=document.getElementById('canvas'),p=c.parentElement;
   function fit(){
-    var w = window.innerWidth;
-    var s = Math.min(w / 1340, 1);
-    c.style.transform = 'scale(' + s + ')';
-    p.style.height = (805 * s) + 'px';
+    var s=Math.min(window.innerWidth/1550,1);
+    c.style.transform='scale('+s+')';
+    p.style.height=(805*s)+'px';
   }
   fit();
-  window.addEventListener('resize', fit);
+  window.addEventListener('resize',fit);
 })();
 </script>
 </body>
